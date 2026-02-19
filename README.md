@@ -6,6 +6,6 @@ This repository contains two applications:
 Customer-facing pet shop application.
 
 ```bash
-cd frontend-petshop
+cd petshop
 npm install
 npm run dev
