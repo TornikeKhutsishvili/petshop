@@ -1,0 +1,11 @@
+{
+  "name": "petshop-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix frontend-petshop\" \"npm run dev --prefix admin-petshop\"",
+    "build": "npm run build --prefix frontend-petshop && npm run build --prefix admin-petshop"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
