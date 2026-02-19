@@ -1,11 +1,16 @@
 {
   "name": "petshop-monorepo",
   "private": true,
+  "workspaces": [
+    "frontend-petshop",
+    "admin-petshop"
+  ],
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix frontend-petshop\" \"npm run dev --prefix admin-petshop\"",
-    "build": "npm run build --prefix frontend-petshop && npm run build --prefix admin-petshop"
+    "dev": "concurrently \"npm run dev --workspace frontend-petshop\" \"npm run dev --workspace admin-petshop\"",
+    "build": "npm run build --workspace frontend-petshop && npm run build --workspace admin-petshop"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
   }
 }
