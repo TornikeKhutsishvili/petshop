@@ -1,4 +1,5 @@
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "./admin-petshop/src/main.tsx"
+  to = "./frontend-petshop/src/main.tsx"
   status = 200
