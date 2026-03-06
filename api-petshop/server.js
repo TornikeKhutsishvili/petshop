@@ -3,7 +3,7 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const PORT = process.env.PORT || 4003;
+const PORT = process.env.PORT || 4003
 
 app.use(cors());
 app.use(express.json());
@@ -176,7 +176,6 @@ let db = {
 
 // Helper function to get resource
 function getResource(req, res, resource) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.json(db[resource]);
@@ -184,7 +183,6 @@ function getResource(req, res, resource) {
 
 // Helper for POST
 function createResource(req, res, resource) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const newItem = { id: uuidv4(), ...req.body };
@@ -194,7 +192,6 @@ function createResource(req, res, resource) {
 
 // Helper for PATCH
 function updateResource(req, res, resource) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const { id } = req.params;
@@ -209,7 +206,6 @@ function updateResource(req, res, resource) {
 
 // Helper for DELETE
 function deleteResource(req, res, resource) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const { id } = req.params;
