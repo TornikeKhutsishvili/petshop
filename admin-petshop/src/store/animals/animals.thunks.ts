@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { animalsList } from "../../interfaces/animals.interface";
 
-// const BASE_URL = "http://localhost:4003/animals";
-const BASE_URL = "https://petshop-admin-petshop.vercel.app/animals";
+const BASE_URL = "http://localhost:4003/animals";
 
 /** GET ANIMALS */
 export const getAnimals = createAsyncThunk<
