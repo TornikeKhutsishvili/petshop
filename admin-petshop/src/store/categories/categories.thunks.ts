@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { categoriesList } from "../../interfaces/categories.interface";
 
-const BASE_URL = import.meta.env.VITE_APP_API_URL;
-// const URL = import.meta.env.VITE_APP_API_URL;
-// const BASE_URL = `${URL}/categories`;
+const URL = import.meta.env.VITE_APP_API_URL;
+const BASE_URL = `${URL}/categories`;
 
 /** GET CATEGORIES */
 export const getCategories = createAsyncThunk<

@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { animalsList } from "../../interfaces/animals.interface";
 
-const BASE_URL = import.meta.env.VITE_APP_API_URL;
-// const URL = import.meta.env.VITE_APP_API_URL;
-// const BASE_URL = `${URL}/animals`;
+const URL = import.meta.env.VITE_APP_API_URL;
+const BASE_URL = `${URL}/animals`;
 
 /** GET ANIMALS */
 export const getAnimals = createAsyncThunk<
