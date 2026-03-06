@@ -3,8 +3,8 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const PORT = process.env.PORT || 4003;
-// const PORT = import.meta.env.VITE_APP_API_URL || 4003;
+// const PORT = process.env.PORT || 4003;
+const PORT = import.meta.env.VITE_APP_API_URL || 4003;
 
 app.use(cors());
 app.use(express.json());
@@ -177,11 +177,17 @@ let db = {
 
 // Helper function to get resource
 function getResource(req, res, resource) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.json(db[resource]);
 }
 
 // Helper for POST
 function createResource(req, res, resource) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const newItem = { id: uuidv4(), ...req.body };
   db[resource].push(newItem);
   res.json(newItem);
@@ -189,6 +195,9 @@ function createResource(req, res, resource) {
 
 // Helper for PATCH
 function updateResource(req, res, resource) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const { id } = req.params;
   const index = db[resource].findIndex(item => item.id === id);
   if (index !== -1) {
@@ -201,6 +210,9 @@ function updateResource(req, res, resource) {
 
 // Helper for DELETE
 function deleteResource(req, res, resource) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   const { id } = req.params;
   const index = db[resource].findIndex(item => item.id === id);
   if (index !== -1) {
@@ -211,17 +223,17 @@ function deleteResource(req, res, resource) {
   }
 }
 
-// Routes for categories
-app.get('/categories', (req, res) => getResource(req, res, 'categories'));
-app.post('/categories', (req, res) => createResource(req, res, 'categories'));
-app.patch('/categories/:id', (req, res) => updateResource(req, res, 'categories'));
-app.delete('/categories/:id', (req, res) => deleteResource(req, res, 'categories'));
-
 // Routes for animals
 app.get('/animals', (req, res) => getResource(req, res, 'animals'));
 app.post('/animals', (req, res) => createResource(req, res, 'animals'));
 app.patch('/animals/:id', (req, res) => updateResource(req, res, 'animals'));
 app.delete('/animals/:id', (req, res) => deleteResource(req, res, 'animals'));
+
+// Routes for categories
+app.get('/categories', (req, res) => getResource(req, res, 'categories'));
+app.post('/categories', (req, res) => createResource(req, res, 'categories'));
+app.patch('/categories/:id', (req, res) => updateResource(req, res, 'categories'));
+app.delete('/categories/:id', (req, res) => deleteResource(req, res, 'categories'));
 
 // Routes for animals_with_categories
 app.get('/animals_with_categories', (req, res) => getResource(req, res, 'animals_with_categories'));
